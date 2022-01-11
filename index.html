@@ -1,15 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Library Project</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library Project</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Rubik:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Library</h1>
+      <button>Add Book</button>
+    </header>
 
-  <script src="main.js"></script>
-</body>
+    <div class="container">
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Pages</th>
+          <th>Read</th>
+        </tr>
+        <tr class="book">
+          <td class="title">The Hobbit</td>
+          <td class="author">JRR Tolkien</td>
+          <td class="pages">300</td>
+          <td class="read"><input type="checkbox" name="read" id="read" /></td>
+        </tr>
+        <tr class="book">
+          <td class="title">The Trial</td>
+          <td class="author">Franz Kafka</td>
+          <td class="pages">200</td>
+          <td class="read"><input type="checkbox" name="read" id="read" /></td>
+        </tr>
+      </table>
+    </div>
+
+    <footer>Paris Woodhouse © 2022</footer>
+
+    <script src="main.js"></script>
+  </body>
 </html>
+
+<!-- <div class="book">
+        The Hobbit, JRR Tolkien, 300 pages, read:
+        <button class="delete">X</button>
+      </div>
+      <div class="book">
+        The Trial, Franz Kafka, 250 pages, read:
+        <button class="delete">X</button>
+      </div>
+      <div class="book">
+        Harry Potter, JK Rowling, 500 pages, read:
+        <!-- <button class="delete">X</button></div> -->
