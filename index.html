@@ -14,11 +14,37 @@
     />
   </head>
   <body>
+
+  <!-- Modal Element -->
+    <div class="modal-container">
+      <h1>Book Info</h1>
+      <button class="exit-modal">X</button>
+      <div class="modal-content">
+        <form>
+          <label for="title">Book Title:</label>
+          <input type="text" name="title" id="title" />
+
+          <label for="author">Author:</label>
+          <input type="text" name="author" id="author" />
+
+          <label for="pages">Pages:</label>
+          <input type="number" name="pages" id="pages" />
+
+          <label for="read">Read:</label>
+          <input type="checkbox" name="read-modal" id="read-modal" />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
     <header>
       <h1>Library</h1>
-      <button>Add Book</button>
+      <button class="add-book-button">Add Book</button>
     </header>
 
+    
+
+    <!-- Book Display element -->
     <div class="container">
       <table>
         <tr>
@@ -42,9 +68,12 @@
       </table>
     </div>
 
-    <footer>Paris Woodhouse © 2022<a href="https://github.com/Woodhouse1919/library-the-odin-project"><img src="github-logo.png" alt="github logo"></a></footer>
-
+    <footer>
+      Paris Woodhouse © 2022<a
+        href="https://github.com/Woodhouse1919/library-the-odin-project"
+        ><img src="github-logo.png" alt="github logo"
+      /></a>
+    </footer>
     <script src="main.js"></script>
   </body>
 </html>
-
