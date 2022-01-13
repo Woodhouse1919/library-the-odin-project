@@ -3,7 +3,6 @@ const addBookButton = document.querySelector('.add-book-button');
 const modalContainer = document.querySelector('.modal-container');
 const exitModalButton = document.querySelector('.exit-modal');
 const submitButton = document.querySelector('.submit-button');
-const deleteButton = document.querySelector('.delete-button');
 
 let myLibrary = [];
 
@@ -46,10 +45,10 @@ function displayBook() {
   const tablePages = document.createElement('td');
   const tableRead = document.createElement('td');
   const checkBox = document.createElement('input');
-  const delButton = document.createElement('button');
+  const deleteButton = document.createElement('button');
 
   tableRow.classList.add('book');
-  tableRow.setAttribute('data', myLibrary.length);
+  tableRow.setAttribute('data-index', myLibrary.length);
   table.appendChild(tableRow);
 
   tableTitle.classList.add('title');
@@ -71,13 +70,19 @@ function displayBook() {
   tableRow.appendChild(tableRead);
   tableRead.appendChild(checkBox);
 
-  delButton.classList.add('delete-button');
-  delButton.textContent = 'x';
-  tableRow.appendChild(delButton);
+  deleteButton.classList.add('delete-button');
+  deleteButton.textContent = 'x';
+  tableRow.appendChild(deleteButton);
+
+  deleteButton.addEventListener('click', (e) => {
+  deleteBook(e);
+});
+ 
 }
 
-function deleteBook() {
-  console.log(deleteButton);
+function deleteBook(e) {
+  myLibrary.splice(e.target.parentNode.dataset.index-1, e.target.parentNode.dataset.index)
+  e.target.parentNode.remove()
 }
 
 // Event listener for opening Book Info Model
@@ -95,6 +100,3 @@ submitButton.addEventListener('click', () => {
   addBookToLibrary();
 });
 
-deleteButton.addEventListener('click', () => {
-  deleteBook();
-});
