@@ -20,7 +20,6 @@
       <h1>Book Info</h1>
       <button class="exit-modal">X</button>
       <div class="modal-content">
-        <form>
           <label for="title">Book Title:</label>
           <input type="text" name="title" id="title" />
 
@@ -28,12 +27,11 @@
           <input type="text" name="author" id="author" />
 
           <label for="pages">Pages:</label>
-          <input type="number" name="pages" id="pages" />
+          <input type="number" min="0" name="pages" id="pages" />
 
           <label for="read">Read:</label>
-          <input type="checkbox" name="read-modal" id="read-modal" />
-          <button type="submit">Submit</button>
-        </form>
+          <input type="checkbox" name="read" id="read" />
+          <button class="submit-button">Submit</button>
       </div>
     </div>
 
@@ -52,18 +50,7 @@
           <th>Author</th>
           <th>Pages</th>
           <th>Read</th>
-        </tr>
-        <tr class="book">
-          <td class="title">The Hobbit</td>
-          <td class="author">JRR Tolkien</td>
-          <td class="pages">300</td>
-          <td class="read"><input type="checkbox" name="read" id="read" /></td>
-        </tr>
-        <tr class="book">
-          <td class="title">The Trial</td>
-          <td class="author">Franz Kafka</td>
-          <td class="pages">200</td>
-          <td class="read"><input type="checkbox" name="read" id="read" /></td>
+          <th class="blank">x</th>
         </tr>
       </table>
     </div>
