@@ -2,17 +2,10 @@
 const addBookButton = document.querySelector('.add-book-button');
 const modalContainer = document.querySelector('.modal-container');
 const exitModalButton = document.querySelector('.exit-modal');
+const submitButton = document.querySelector('.submit-button');
+const deleteButton = document.querySelector('.delete-button');
 
-
-let myLibrary = [
-  {
-    title: 'The Hobbit',
-    author: 'JRR Tolkien',
-    pages: '300',
-    read: true,
-  }
-
-];
+let myLibrary = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -21,50 +14,87 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-function addBook(title, author, pages, read) {
-// Grabbing table Dom Element
-const table = document.querySelector('tbody')
-const tableRow = document.createElement('tr')
-const tableTitle = document.createElement('td')
-const tableAuthor = document.createElement('td')
-const tablePages = document.createElement('td')
-const tableRead = document.createElement('td')
-const checkBox = document.createElement('input')
+function addBookToLibrary() {
+  // Grabbing input DOM Elements
+  const inputTitle = document.querySelector('#title');
+  const inputAuthor = document.querySelector('#author');
+  const inputPages = document.querySelector('#pages');
+  const inputCheckbox = document.querySelector('#read');
 
+  let book = new Book(
+    inputTitle.value,
+    inputAuthor.value,
+    inputPages.value,
+    inputCheckbox.checked,
+  );
+  myLibrary.push(book);
 
-tableRow.classList.add('book')
-table.appendChild(tableRow)
-
-tableTitle.classList.add('title')
-tableTitle.textContent = title
-tableRow.appendChild(tableTitle)
-
-tableAuthor.classList.add('author')
-tableAuthor.textContent = author
-tableRow.appendChild(tableAuthor)
-
-tablePages.classList.add('pages')
-tablePages.textContent = pages
-tableRow.appendChild(tablePages)
-
-
-checkBox.type = 'checkbox'
-checkBox.name = 'read'
-checkBox.id = 'read'
-checkBox.checked = read
-tableRow.appendChild(tableRead)
-tableRead.appendChild(checkBox)
+  inputTitle.value = '';
+  inputAuthor.value = '';
+  inputPages.value = '';
+  inputCheckbox.checked = false;
+  modalContainer.style.display = 'none';
+  displayBook();
 }
 
+function displayBook() {
+  // Grabbing table Dom Element
+  const table = document.querySelector('tbody');
+  const tableRow = document.createElement('tr');
+  const tableTitle = document.createElement('td');
+  const tableAuthor = document.createElement('td');
+  const tablePages = document.createElement('td');
+  const tableRead = document.createElement('td');
+  const checkBox = document.createElement('input');
+  const delButton = document.createElement('button');
 
+  tableRow.classList.add('book');
+  tableRow.setAttribute('data', myLibrary.length);
+  table.appendChild(tableRow);
+
+  tableTitle.classList.add('title');
+  tableTitle.textContent = myLibrary[myLibrary.length - 1].title;
+  tableRow.appendChild(tableTitle);
+
+  tableAuthor.classList.add('author');
+  tableAuthor.textContent = myLibrary[myLibrary.length - 1].author;
+  tableRow.appendChild(tableAuthor);
+
+  tablePages.classList.add('pages');
+  tablePages.textContent = myLibrary[myLibrary.length - 1].pages;
+  tableRow.appendChild(tablePages);
+
+  checkBox.type = 'checkbox';
+  checkBox.name = 'read';
+  checkBox.id = 'read';
+  checkBox.checked = myLibrary[myLibrary.length - 1].read;
+  tableRow.appendChild(tableRead);
+  tableRead.appendChild(checkBox);
+
+  delButton.classList.add('delete-button');
+  delButton.textContent = 'x';
+  tableRow.appendChild(delButton);
+}
+
+function deleteBook() {
+  console.log(deleteButton);
+}
 
 // Event listener for opening Book Info Model
 addBookButton.addEventListener('click', () => {
   modalContainer.style.display = 'flex';
-  
 });
 
 // Event listener for closing Book Info Modal
 exitModalButton.addEventListener('click', () => {
   modalContainer.style.display = 'none';
+});
+
+// Event listener for adding book to library
+submitButton.addEventListener('click', () => {
+  addBookToLibrary();
+});
+
+deleteButton.addEventListener('click', () => {
+  deleteBook();
 });
