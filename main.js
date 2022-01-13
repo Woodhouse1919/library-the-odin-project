@@ -20,20 +20,25 @@ function addBookToLibrary() {
   const inputPages = document.querySelector('#pages');
   const inputCheckbox = document.querySelector('#read');
 
-  let book = new Book(
-    inputTitle.value,
-    inputAuthor.value,
-    inputPages.value,
-    inputCheckbox.checked,
-  );
-  myLibrary.push(book);
+  if (inputTitle.value === '' || inputAuthor.value === 0 || inputPages.value === '') {
+    alert('Please fill out all fields')
+    return;
+  } else {
+    let book = new Book(
+      inputTitle.value,
+      inputAuthor.value,
+      inputPages.value,
+      inputCheckbox.checked,
+    );
+    myLibrary.push(book);
 
-  inputTitle.value = '';
-  inputAuthor.value = '';
-  inputPages.value = '';
-  inputCheckbox.checked = false;
-  modalContainer.style.display = 'none';
-  displayBook();
+    inputTitle.value = '';
+    inputAuthor.value = '';
+    inputPages.value = '';
+    inputCheckbox.checked = false;
+    modalContainer.style.display = 'none';
+    displayBook();
+  }
 }
 
 function displayBook() {
@@ -75,14 +80,16 @@ function displayBook() {
   tableRow.appendChild(deleteButton);
 
   deleteButton.addEventListener('click', (e) => {
-  deleteBook(e);
-});
- 
+    deleteBook(e);
+  });
 }
 
 function deleteBook(e) {
-  myLibrary.splice(e.target.parentNode.dataset.index-1, e.target.parentNode.dataset.index)
-  e.target.parentNode.remove()
+  myLibrary.splice(
+    e.target.parentNode.dataset.index - 1,
+    e.target.parentNode.dataset.index,
+  );
+  e.target.parentNode.remove();
 }
 
 // Event listener for opening Book Info Model
@@ -99,4 +106,3 @@ exitModalButton.addEventListener('click', () => {
 submitButton.addEventListener('click', () => {
   addBookToLibrary();
 });
-
